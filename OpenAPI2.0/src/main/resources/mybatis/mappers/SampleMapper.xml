@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mybatis는 namespace의 값인 com.lgup.openapi.rest.persistence.SampleMapper 인터페이스를 매퍼로 연결한다. -->
+<mapper namespace="com.lgup.openapi.sample.persistence">
+
+    <select id="findById" resultType="Sample"><![CDATA[
+        SELECT agent_targetsend_seq
+        FROM TB_AGENT_TARGETSEND ]]>
+    </select>
+
+</mapper>

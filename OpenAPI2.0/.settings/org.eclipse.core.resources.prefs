@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/main/resource/config/database.properties=UTF-8
+encoding//src/main/resources/message/message-common_en_US.properties=UTF-8
+encoding//src/main/resources/message/message-common_ko_KR.properties=UTF-8
+encoding/<project>=UTF-8

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+    
+    <bean name="appPropService" class="com.lgup.openapi.common.properties.impl.OpenapiPropertiesServiceImpl" destroy-method="destroy">
+        <property name="extFileName">
+            <set>
+                <map>
+                   <entry key="encoding" value="UTF-8"/>
+                   <entry key="filename" value="classpath*:properties/app.*.properties"/>
+                </map>
+            </set>
+        </property>
+        <property name="properties">
+            <map>
+                <entry key="pageUnit" value="10"/>
+                <entry key="pageSize" value="10"/>
+            </map>
+        </property>     
+    </bean>
+    
+    <bean name="sysPropService" class="com.lgup.openapi.common.properties.impl.OpenapiPropertiesServiceImpl" destroy-method="destroy">
+        <property name="extFileName">
+            <set>
+                <map>
+                   <entry key="encoding" value="UTF-8"/>
+                   <entry key="filename" value="classpath*:properties/system.properties"/>
+                </map>
+            </set>
+        </property>
+        <property name="properties">
+            <map>
+                <entry key="pageUnit" value="10"/>
+                <entry key="pageSize" value="10"/>
+            </map>
+        </property>     
+    </bean>
+</beans>    

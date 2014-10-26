@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+    	http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+    
+    <!--
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="jdbc/JmateDs" />
+        <property name="resourceRef" value="true" />
+    </bean>
+    -->    
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@192.168.9.36:1521:NIMDB2"/>
+        <property name="username" value="imory20"/>
+        <property name="password" value="oracle"/>
+    </bean>
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/mybatis-configuration.xml" />
+    	<property name="mapperLocations">
+    		<list>
+    			<value>classpath*:mybatis/mappers/**/*.xml</value>
+    		</list>
+    	</property>
+    	<property name="typeAliasesPackage" value="com.lgup.openapi.sample.model" />
+    </bean>
+    
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    	<constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
+    
+    <mybatis:scan base-package="com.lgup.openapi.rest.persitence,com.lgup.openapi.sample.persistence" />
+    
+</beans>    
