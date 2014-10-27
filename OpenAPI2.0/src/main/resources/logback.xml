@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+	    <!--
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+		    <evaluator>
+		         <expression>return message.contains("dddd");</expression>
+		    </evaluator>
+		    <OnMismatch>DENY</OnMismatch>
+		    <OnMatch>NEUTRAL</OnMatch>
+		</filter>
+	    -->
+		<encoder>
+		    <!--
+			<pattern>%d %-5p %c{1} - %m%n</pattern>
+		    -->
+			<pattern>%d [%thread] %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+		<charset>UTF-8</charset>
+	</appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/log/openapi2.0.log</file>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/log/openapi2.0.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d %-5p %c{1} - %m%n</pattern>
+			<!-- <pattern>%d %-5p | %t | %-55logger{55} | %L | %m %n</pattern> -->
+		</encoder>
+		<charset>UTF-8</charset>
+	</appender>
+
+   <!-- Application Loggers -->
+    <logger name="com.lgup.openapi">
+        <level value="debug" />
+    </logger>
+
+    <logger name="com.atomikos">
+        <level value="debug" />
+    </logger>
+    
+    <!-- 3rdparty Loggers -->
+    <logger name="org.springframework.core">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.beans">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.context">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.cache">
+        <level value="debug" />
+    </logger>
+
+    <logger name="java.sql" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="com.ibatis" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <logger name="org.mybatis" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- Root Logger -->
+    <root>
+        <priority value="warn" />
+		<appender-ref ref="CONSOLE" />
+		<!--
+		<appender-ref ref="FILE" />
+		-->
+    </root>
+	
+</configuration>
