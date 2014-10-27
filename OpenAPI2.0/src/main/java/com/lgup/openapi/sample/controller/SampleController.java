@@ -1,6 +1,7 @@
 package com.lgup.openapi.sample.controller;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lgup.openapi.sample.model.Sample;
 import com.lgup.openapi.sample.service.SampleService;
 
 @Controller
@@ -24,8 +24,35 @@ public class SampleController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
+	public Map<String, String> getSample() {
+		Map<String, String> map = new HashMap<>();
+		map.put("name", "wony");
+		map.put("age", "32");
+		
+		LOG.debug("######################## debug");
+		LOG.debug("######################## debug");
+		LOG.debug("######################## debug");
+		LOG.debug("######dddd");
+		LOG.debug("######################## debug");
+		LOG.debug("######################## debug");
+		LOG.debug("######################## debug");
+		LOG.debug("######################## debug");
+		LOG.info("######################## info");
+		LOG.info("######################## info");
+		LOG.info("######################## info");
+		LOG.info("######################## info");
+		LOG.info("############iiii######## info");
+		LOG.info("######################## info");
+		LOG.info("######################## info");
+		LOG.info("######################## info");
+		LOG.info("######################## info");
+		
+		return map;
+	}
+	/*
 	public List<Sample> getAllSample() {
 		return sampleService.findById();
 	}
+	*/
 
 }
