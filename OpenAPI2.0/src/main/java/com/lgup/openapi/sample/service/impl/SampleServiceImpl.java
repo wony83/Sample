@@ -20,5 +20,12 @@ public class SampleServiceImpl implements SampleService {
 		
 		return sampleMapper.findById();
 	}
+	
+	@Override
+	public int insertSample(Sample sample) {
+		int result = sampleMapper.insertSample(sample);
+		
+		return result;
+	}
 
 }

@@ -15,4 +15,6 @@ import com.lgup.openapi.sample.model.Sample;
 @Mapper
 public interface SampleMapper {
 	List<Sample> findById();
+	
+	int insertSample(Sample sample);
 }

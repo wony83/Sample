@@ -14,10 +14,10 @@
     -->    
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@192.168.9.36:1521:NIMDB2"/>
-        <property name="username" value="imory20"/>
-        <property name="password" value="oracle"/>
+        <property name="driverClassName" value="#{openapiProp['jdbc.driverClassName']}"/>
+        <property name="url" value="#{openapiProp['jdbc.url']}"/>
+        <property name="username" value="#{openapiProp['jdbc.username']}"/>
+        <property name="password" value="#{openapiProp['jdbc.password']}"/>
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -28,7 +28,7 @@
     			<value>classpath*:mybatis/mappers/**/*.xml</value>
     		</list>
     	</property>
-    	<property name="typeAliasesPackage" value="com.lgup.openapi.sample.model" />
+    	<property name="typeAliasesPackage" value="com.lgup.openapi.rest.model,com.lgup.openapi.sample.model" />
     </bean>
     
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
